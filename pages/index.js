@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Script from 'next/script'
+import Link from 'next/link'
 export default function Home() {
   return (
     <div className={styles.container}>
@@ -13,11 +14,27 @@ export default function Home() {
       <Script src=""/>
 
     <nav className={styles.mainnav}>
-      <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Blog</li>
-        <li>Contact</li>
+   <ul>
+    <li>
+        <Link href="/">
+          <a>Home</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/about">
+          <a>About Us</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/blog">
+          <a>Blog Post</a>
+        </Link>
+      </li>
+      <li>
+        <Link href="/contact">
+          <a>Contact Us  </a>
+        </Link>
+      </li>
       </ul>
     </nav>
     <hr />
