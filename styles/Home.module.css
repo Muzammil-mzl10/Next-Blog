@@ -133,3 +133,8 @@
   list-style: none;
   font-weight: bold;
 }
+
+.home_img{
+  margin-top: 20px;
+  /* border-radius: 20px solid rgb(245, 7, 7); */
+}
