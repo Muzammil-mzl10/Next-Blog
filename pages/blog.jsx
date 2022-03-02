@@ -2,25 +2,16 @@ import react, { useEffect, useState } from "react";
 import styles from "../styles/Blog.module.css";
 import Link from "next/link";
 
-const Blog = () => {
-  const [blogs, setblogs] = useState([]);
-  useEffect(() => {
-    console.log("UseEffect is Running");
-    fetch("http://localhost:3000/api/blog")
-      .then((a) => {
-        return a.json();
-      })
-      .then((parsed) => {
-        // console.log(parsed)
-        setblogs(parsed);
-      });
-  }, []);
+const Blog = (props) => {
+  console.log(props)
+  const [blogs, setblogs] = useState(props.myprops);
+  // setblogs(this.props)
 
   return (
     <>
       <div className={styles.container}>
         <main className={styles.main}>
-          {/* <div className="blogs"> */}
+          
           <h1>This is React Blog</h1>
           {blogs.map((data, key) => {
             return (
@@ -33,7 +24,7 @@ const Blog = () => {
                 </Link>
               </div>
             );
-          })}
+          })}+
 
           
             {/* <h2> Latest Blogs</h2>
@@ -52,4 +43,15 @@ const Blog = () => {
     </>
   );
 };
+
+export async function getServerSideProps(context) {
+  console.log("UseEffect is Running");
+    let data = await  fetch("http://localhost:3000/api/blog")
+    let myprops = await data.json();
+
+  return {
+    props: {myprops}, // will be passed to the page component as props
+  }
+}
+
 export default Blog;
